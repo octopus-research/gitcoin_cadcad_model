@@ -19,14 +19,7 @@ def robust_shortest_path_length(*args, **kwargs) -> float:
 def NeighborsSubgraph(contribution_graph: nx.Graph, grant: str) -> nx.Graph:
     """"""
     source = grant
-    distances_to_source = {
-        target: robust_shortest_path_length(contribution_graph, source, target)
-        for target in contribution_graph.nodes
-    }
-
-    neighbors = [
-        node for (node, distance) in distances_to_source.items() if distance <= 3
-    ]
+    #TODO: use Breadth-First Seach instead of Generate and Test
 
     neighbors_subgraph = contribution_graph.subgraph(neighbors)
     return neighbors_subgraph
